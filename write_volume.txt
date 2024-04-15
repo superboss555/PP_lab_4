@@ -1,0 +1,1 @@
+VolumeOfWorks {  pagesInBooks = [100, 200, 150], seriesName= Classic Novels , introPages = 10}
