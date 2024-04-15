@@ -21,7 +21,7 @@ public class UserInterface {
                     String lineBook = reader.readLine();
                     String[] parts1 = lineBook.split(" ");
                     int[] pagesInBooks = new int[parts1.length];
-                    for (int i = 0; i < (parts1.length - 1 ); i++) {
+                    for (int i = 0; i < (parts1.length - 1); i++) {
                         pagesInBooks[i] = Integer.parseInt(parts1[i]);
                     }
                     System.out.println("Название серии: ");
@@ -55,26 +55,24 @@ public class UserInterface {
         try {
             // запись в байтовый поток
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//            StreamHandler.output(myInterface, byteArrayOutputStream);
+            StreamHandler.output(myInterface, byteArrayOutputStream);
 
             // запись символьный поток
-            StreamHandler.write(myInterface, byteArrayOutputStream);
+//            StreamHandler.write(myInterface, byteArrayOutputStream);
 
 
-            myInterface = StreamHandler.read();
+//            myInterface = StreamHandler.read();
 
 
 //            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
 //            myInterface = StreamHandler.input(byteArrayInputStream);
-            System.out.println("\n///" + myInterface);
+//            System.out.println("\n///" + myInterface);
 
 
+            StreamHandler.serialiseInterface(myInterface);
 
-
-//            StreamHandler.serialiseInterface(myInterface);
-//
-//            FileInputStream fileInputStream = new FileInputStream("serialised.dat");
-//            MyInterface deserialisedInterface = StreamHandler.deserialiseInterface(fileInputStream);
+            MyInterface deserialisedInterface = StreamHandler.deserialiseInterface();
+            System.out.println("Десериализовано: " + deserialisedInterface);
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -35,31 +35,26 @@ public class StreamHandler {
         }
     }
 
-    public static void serialiseInterface(MyInterface o)  {
-        /*ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-        objectOutputStream.writeObject(o);*/
+    public static void serialiseInterface(MyInterface o) {
         try {
-            FileOutputStream outputStream = new FileOutputStream("serialized.dat");
+            FileOutputStream outputStream = new FileOutputStream("serialised.dat");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(o);
             objectOutputStream.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static MyInterface deserialiseInterface(InputStream inputStream) throws IOException, ClassNotFoundException {
-//        ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-//        return (MyInterface) objectInputStream.readObject();
+    public static MyInterface deserialiseInterface() throws IOException, ClassNotFoundException {
         try {
             FileInputStream fileInputStream = new FileInputStream("serialised.dat");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
             MyInterface myInterface = (MyInterface) objectInputStream.readObject();
 
-            System.out.println(myInterface);
             return myInterface;
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
