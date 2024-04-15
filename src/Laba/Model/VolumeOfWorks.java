@@ -1,11 +1,14 @@
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Writer;
+package Laba.Model;
+
+import Laba.Exception.MyDeclaredException;
+import Laba.Exception.MyUncheckedException;
+import Laba.Interface.MyInterface;
+
+import java.io.*;
 import java.util.Arrays;
 
 // Класс "Серия сочинений" со своей функциональной семантикой
-class VolumeOfWorks implements MyInterface {
+public class VolumeOfWorks implements MyInterface {
     private int[] pagesInBooks;
     private String seriesName;
     private int introPages;
@@ -21,7 +24,7 @@ class VolumeOfWorks implements MyInterface {
 
     @Override
     public String toString() {
-        return "VolumeOfWorks { " +
+        return "model.VolumeOfWorks { " +
                 " pagesInBooks = " + Arrays.toString(pagesInBooks) +
                 ", seriesName= " + seriesName + " " +
                 ", introPages = " + introPages +

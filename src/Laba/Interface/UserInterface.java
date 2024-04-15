@@ -1,12 +1,18 @@
+package Laba.Interface;
+
+import Laba.Handler.StreamHandler;
+import Laba.Model.ArticleCollection;
+import Laba.Model.VolumeOfWorks;
+
 import java.io.*;
 
-class UserInterface {
+public class UserInterface {
     public void doUserInterface() throws IOException, ClassNotFoundException {
         MyInterface myInterface = null;
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-            System.out.println("\n\n\nВыберите тип (1 - VolumeOfWorks, 2 - ArticleCollection) : ");
+            System.out.println("\n\n\nВыберите тип (1 - model.VolumeOfWorks, 2 - model.ArticleCollection) : ");
             int choice = Integer.parseInt(reader.readLine());
 
             switch (choice) {
@@ -15,7 +21,7 @@ class UserInterface {
                     String lineBook = reader.readLine();
                     String[] parts1 = lineBook.split(" ");
                     int[] pagesInBooks = new int[parts1.length];
-                    for (int i = 0; i < parts1.length; i++) {
+                    for (int i = 0; i < (parts1.length - 1 ); i++) {
                         pagesInBooks[i] = Integer.parseInt(parts1[i]);
                     }
                     System.out.println("Название серии: ");
@@ -47,25 +53,30 @@ class UserInterface {
         }
 
         try {
+            // запись в байтовый поток
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            StreamHandler.output(myInterface, byteArrayOutputStream);
+//            StreamHandler.output(myInterface, byteArrayOutputStream);
 
-            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
-            myInterface = StreamHandler.input(byteArrayInputStream);
+            // запись символьный поток
+            StreamHandler.write(myInterface, byteArrayOutputStream);
 
-            FileWriter fileWriter = new FileWriter("output.txt");
-            StreamHandler.write(myInterface, fileWriter);
 
-            FileReader fileReader = new FileReader("output.txt");
-            myInterface = StreamHandler.read(fileReader);
+            myInterface = StreamHandler.read();
 
-            FileOutputStream fileOutputStream = new FileOutputStream("serialized.dat");
-            StreamHandler.serialiseInterface(myInterface, fileOutputStream);
 
-            FileInputStream fileInputStream = new FileInputStream("serialised.dat");
-            MyInterface deserialisedInterface = StreamHandler.deserialiseInterface(fileInputStream);
+//            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+//            myInterface = StreamHandler.input(byteArrayInputStream);
+            System.out.println("\n///" + myInterface);
 
-        } catch (IOException | ClassNotFoundException e) {
+
+
+
+//            StreamHandler.serialiseInterface(myInterface);
+//
+//            FileInputStream fileInputStream = new FileInputStream("serialised.dat");
+//            MyInterface deserialisedInterface = StreamHandler.deserialiseInterface(fileInputStream);
+
+        } catch (IOException e) {
             e.printStackTrace();
 
         }

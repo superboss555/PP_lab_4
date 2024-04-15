@@ -1,4 +1,12 @@
-import java.util.Arrays;
+package Laba;
+
+import Laba.Exception.MyDeclaredException;
+import Laba.Handler.OutputHandler;
+import Laba.Interface.MyInterface;
+import Laba.Interface.UserInterface;
+import Laba.Model.ArticleCollection;
+import Laba.Model.VolumeOfWorks;
+
 import java.io.*;
 
 
@@ -32,7 +40,7 @@ public class Main {
         VolumeOfWorks volume = new VolumeOfWorks(new int[]{100, 200, 150}, "Classic Novels", 10);
         ArticleCollection articleCollection = new ArticleCollection(new int[]{20, 30, 40}, "Research Papers", 5);
 
-        // Создание экземпляра OutputHandler
+        // Создание экземпляра Laba.Handler.OutputHandler
         OutputHandler outputHandler = new OutputHandler();
 
         // Вызов метода add для обработки вывода

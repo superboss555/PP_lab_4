@@ -1,9 +1,15 @@
+package Laba.Interface;
+
+import Laba.Exception.MyDeclaredException;
+import Laba.Exception.MyUncheckedException;
+
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.io.Writer;
 
 // Интерфейс, описывающий методы доступа к полям объектов и функциональный метод
-interface MyInterface {
+public interface MyInterface extends Serializable {
 
     String getStringField() throws MyUncheckedException;
 

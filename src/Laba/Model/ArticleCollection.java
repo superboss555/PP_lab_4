@@ -1,10 +1,17 @@
+package Laba.Model;
+
+import Laba.Exception.MyDeclaredException;
+import Laba.Exception.MyUncheckedException;
+import Laba.Interface.MyInterface;
+
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.io.Writer;
 import java.util.Arrays;
 
 // Класс "Сборник статей" со своей функциональной семантикой
-class ArticleCollection implements MyInterface {
+public class ArticleCollection implements MyInterface {
     private int[] pagesInArticles;
     private String collectionName;
     private int maxAnnotationPages;
@@ -34,7 +41,7 @@ class ArticleCollection implements MyInterface {
 
     @Override
     public String toString() {
-        return "ArticleCollection { " +
+        return "model.ArticleCollection { " +
                 " pagesInArticles = " + Arrays.toString(pagesInArticles) +
                 ", collectionName = " + collectionName + " " +
                 ", maxAnnotationPages = " + maxAnnotationPages +

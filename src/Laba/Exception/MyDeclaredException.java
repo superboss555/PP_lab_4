@@ -1,5 +1,7 @@
+package Laba.Exception;
+
 // Объявляемое исключение
-class MyDeclaredException extends Exception {
+public class MyDeclaredException extends Exception {
     public MyDeclaredException(String message) {
         super(message);
     }
